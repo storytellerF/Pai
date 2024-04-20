@@ -5,7 +5,6 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.children
-import kotlin.math.abs
 
 class CardLayout @JvmOverloads constructor(
     context: Context,
@@ -24,8 +23,8 @@ class CardLayout @JvmOverloads constructor(
         )
         val parentHeight = (childHeight.toFloat() * parentWidth / childWidth).toInt()
         child.setScale(parentWidth.toFloat() / childWidth)
-        child.translationX = abs(childWidth - parentWidth).toFloat() / 2
-        child.translationY = abs(childHeight - parentHeight).toFloat() / 2
+        child.translationX = (parentWidth - childWidth).toFloat() / 2
+        child.translationY = (parentHeight - childHeight).toFloat() / 2
         setMeasuredDimension(parentWidth, parentHeight)
     }
 
